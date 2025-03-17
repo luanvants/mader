@@ -1,0 +1,12 @@
+<launch>
+
+	<node pkg="mader" type="test_semantic_aware_astart" name="test_semantic_aware_astart" output="screen" >
+		<param name="basis" value="MINVO"/> <!-- MINVO   or   B_SPLINE or BEZIER-->
+	</node>
+	<node ns="sea1" pkg="mader" type="test_semantic_aware_astart" name="test_semantic_aware_astart" output="screen" >
+		<param name="basis" value="MINVO"/> <!-- MINVO   or   B_SPLINE or BEZIER-->
+	</node>
+
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find mader)/rviz_cfgs/semantic_aware_astar_search.rviz"/>
+
+</launch>

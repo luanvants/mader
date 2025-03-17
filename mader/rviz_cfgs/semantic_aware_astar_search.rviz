@@ -1,0 +1,548 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 138
+    Name: Displays
+    Property Tree Widget:
+      Expanded: ~
+      Splitter Ratio: 0.772455096244812
+    Tree Height: 1229
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.5886790156364441
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Name: Time
+    SyncMode: 0
+    SyncSource: ""
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+      Marker Alpha: 1
+      Marker Scale: 3
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        {}
+      Update Interval: 0
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_best_trajectory_found
+      Name: BestTrajAll
+      Namespaces:
+        traj141: true
+        traj148: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_trajectories_found
+      Name: AllTrajs
+      Namespaces:
+        traj0: true
+        traj1: true
+        traj10: true
+        traj100: true
+        traj101: true
+        traj102: true
+        traj103: true
+        traj104: true
+        traj105: true
+        traj106: true
+        traj107: true
+        traj108: true
+        traj109: true
+        traj11: true
+        traj110: true
+        traj111: true
+        traj112: true
+        traj113: true
+        traj114: true
+        traj115: true
+        traj116: true
+        traj117: true
+        traj118: true
+        traj119: true
+        traj12: true
+        traj120: true
+        traj121: true
+        traj122: true
+        traj123: true
+        traj124: true
+        traj125: true
+        traj126: true
+        traj127: true
+        traj128: true
+        traj129: true
+        traj13: true
+        traj130: true
+        traj131: true
+        traj132: true
+        traj133: true
+        traj134: true
+        traj135: true
+        traj136: true
+        traj137: true
+        traj138: true
+        traj139: true
+        traj14: true
+        traj140: true
+        traj141: true
+        traj142: true
+        traj143: true
+        traj144: true
+        traj145: true
+        traj146: true
+        traj147: true
+        traj15: true
+        traj16: true
+        traj17: true
+        traj18: true
+        traj19: true
+        traj2: true
+        traj20: true
+        traj21: true
+        traj22: true
+        traj23: true
+        traj24: true
+        traj25: true
+        traj26: true
+        traj27: true
+        traj28: true
+        traj29: true
+        traj3: true
+        traj30: true
+        traj31: true
+        traj32: true
+        traj33: true
+        traj34: true
+        traj35: true
+        traj36: true
+        traj37: true
+        traj38: true
+        traj39: true
+        traj4: true
+        traj40: true
+        traj41: true
+        traj42: true
+        traj43: true
+        traj44: true
+        traj45: true
+        traj46: true
+        traj47: true
+        traj48: true
+        traj49: true
+        traj5: true
+        traj50: true
+        traj51: true
+        traj52: true
+        traj53: true
+        traj54: true
+        traj55: true
+        traj56: true
+        traj57: true
+        traj58: true
+        traj59: true
+        traj6: true
+        traj60: true
+        traj61: true
+        traj62: true
+        traj63: true
+        traj64: true
+        traj65: true
+        traj66: true
+        traj67: true
+        traj68: true
+        traj69: true
+        traj7: true
+        traj70: true
+        traj71: true
+        traj72: true
+        traj73: true
+        traj74: true
+        traj75: true
+        traj76: true
+        traj77: true
+        traj78: true
+        traj79: true
+        traj8: true
+        traj80: true
+        traj81: true
+        traj82: true
+        traj83: true
+        traj84: true
+        traj85: true
+        traj86: true
+        traj87: true
+        traj88: true
+        traj89: true
+        traj9: true
+        traj90: true
+        traj91: true
+        traj92: true
+        traj93: true
+        traj94: true
+        traj95: true
+        traj96: true
+        traj97: true
+        traj98: true
+        traj99: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /convex_hulls
+      Name: ConvexHulls
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_traj_obstacle_colored_int_0
+      Name: MarkerArray0
+      Namespaces:
+        marker_dyn_obs: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_traj_obstacle_colored_int_1
+      Name: MarkerArray1
+      Namespaces:
+        marker_dyn_obs: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_traj_obstacle_colored_int_2
+      Name: MarkerArray2
+      Namespaces:
+        marker_dyn_obs: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_traj_obstacle_colored_int_3
+      Name: MarkerArray3
+      Namespaces:
+        marker_dyn_obs: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_traj_obstacle_colored_int_4
+      Name: MarkerArray4
+      Namespaces:
+        marker_dyn_obs: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_traj_obstacle_colored_int_5
+      Name: MarkerArray5
+      Namespaces:
+        marker_dyn_obs: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_traj_obstacle_colored_int_6
+      Name: MarkerArray6
+      Namespaces:
+        marker_dyn_obs: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_best_trajectory_found_int_0
+      Name: BestTraj0
+      Namespaces:
+        traj141: true
+        traj148: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_best_trajectory_found_int_1
+      Name: BestTraj1
+      Namespaces:
+        traj141: true
+        traj148: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_best_trajectory_found_int_2
+      Name: BestTraj2
+      Namespaces:
+        traj141: true
+        traj148: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_best_trajectory_found_int_3
+      Name: BestTraj3
+      Namespaces:
+        traj141: true
+        traj148: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_best_trajectory_found_int_4
+      Name: BestTraj4
+      Namespaces:
+        traj141: true
+        traj148: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_best_trajectory_found_int_5
+      Name: BestTraj5
+      Namespaces:
+        traj141: true
+        traj148: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: sea_best_trajectory_found_int_6
+      Name: BestTraj6
+      Namespaces:
+        traj141: true
+        traj148: true
+      Queue Size: 100
+      Value: true
+    - Alpha: 0.05000000074505806
+      BoundColor: 0; 0; 0
+      Class: decomp_rviz_plugins/PolyhedronArray
+      Enabled: true
+      MeshColor: 46; 52; 54
+      Name: Obstacles0
+      Queue Size: 10
+      Scale: 0.009999999776482582
+      State: Both
+      Topic: /sea_poly_jps_int_0
+      Unreliable: false
+      Value: true
+      VsColor: 239; 41; 41
+      VsScale: 1
+    - Alpha: 0.05000000074505806
+      BoundColor: 0; 0; 0
+      Class: decomp_rviz_plugins/PolyhedronArray
+      Enabled: true
+      MeshColor: 46; 52; 54
+      Name: Obstacles1
+      Queue Size: 10
+      Scale: 0.009999999776482582
+      State: Both
+      Topic: /sea_poly_jps_int_1
+      Unreliable: false
+      Value: true
+      VsColor: 239; 41; 41
+      VsScale: 1
+    - Alpha: 0.05000000074505806
+      BoundColor: 0; 0; 0
+      Class: decomp_rviz_plugins/PolyhedronArray
+      Enabled: true
+      MeshColor: 46; 52; 54
+      Name: Obstacles2
+      Queue Size: 10
+      Scale: 0.009999999776482582
+      State: Both
+      Topic: /sea_poly_jps_int_2
+      Unreliable: false
+      Value: true
+      VsColor: 239; 41; 41
+      VsScale: 1
+    - Alpha: 0.05000000074505806
+      BoundColor: 0; 0; 0
+      Class: decomp_rviz_plugins/PolyhedronArray
+      Enabled: true
+      MeshColor: 46; 52; 54
+      Name: Obstacles3
+      Queue Size: 10
+      Scale: 0.009999999776482582
+      State: Both
+      Topic: /sea_poly_jps_int_3
+      Unreliable: false
+      Value: true
+      VsColor: 239; 41; 41
+      VsScale: 1
+    - Alpha: 0.05000000074505806
+      BoundColor: 0; 0; 0
+      Class: decomp_rviz_plugins/PolyhedronArray
+      Enabled: true
+      MeshColor: 46; 52; 54
+      Name: Obstacles4
+      Queue Size: 10
+      Scale: 0.009999999776482582
+      State: Both
+      Topic: /sea_poly_jps_int_4
+      Unreliable: false
+      Value: true
+      VsColor: 239; 41; 41
+      VsScale: 1
+    - Alpha: 0.05000000074505806
+      BoundColor: 0; 0; 0
+      Class: decomp_rviz_plugins/PolyhedronArray
+      Enabled: true
+      MeshColor: 46; 52; 54
+      Name: Obstacles5
+      Queue Size: 10
+      Scale: 0.009999999776482582
+      State: Both
+      Topic: /sea_poly_jps_int_5
+      Unreliable: false
+      Value: true
+      VsColor: 239; 41; 41
+      VsScale: 1
+    - Alpha: 0.05000000074505806
+      BoundColor: 0; 0; 0
+      Class: decomp_rviz_plugins/PolyhedronArray
+      Enabled: true
+      MeshColor: 46; 52; 54
+      Name: Obstacles6
+      Queue Size: 10
+      Scale: 0.009999999776482582
+      State: Both
+      Topic: /sea_poly_jps_int_6
+      Unreliable: false
+      Value: true
+      VsColor: 239; 41; 41
+      VsScale: 1
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /sea_static_obs
+      Name: Static obstacles
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Alpha: 1
+      Class: rviz/Axes
+      Enabled: true
+      Length: 1
+      Name: Axes
+      Radius: 0.10000000149011612
+      Reference Frame: <Fixed Frame>
+      Show Trail: false
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /voxel_region
+      Name: attractiveReg
+      Namespaces:
+        voxel_region: true
+      Queue Size: 100
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 238; 238; 236
+    Default Light: true
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Theta std deviation: 0.2617993950843811
+      Topic: /initialpose
+      X std deviation: 0.5
+      Y std deviation: 0.5
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 7.132498264312744
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Field of View: 0.7853981852531433
+      Focal Point:
+        X: 0.07003983110189438
+        Y: -0.033679600805044174
+        Z: 0.6141696572303772
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.25479835271835327
+      Target Frame: <Fixed Frame>
+      Yaw: 1.503143072128296
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 2032
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd0000000400000000000001f7000006eafc0200000008fb0000001200530065006c0065006300740069006f006e010000006e00000119000000b000fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000b0fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000193000005c50000018200fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000015f000006eafc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000006e000006ea0000013200fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000e700000005efc0100000002fb0000000800540069006d0065010000000000000e70000006dc00fffffffb0000000800540069006d0065010000000000000450000000000000000000000b02000006ea00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 3696
+  X: 144
+  Y: 54

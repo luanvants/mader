@@ -115,6 +115,10 @@ target_link_libraries(test_bspline_utils ${catkin_LIBRARIES})
 
 unset(USE_GUROBI CACHE) # To avoid https://stackoverflow.com/questions/22481647/cmake-if-else-with-option
 
+#add semantic-aware astar
+add_executable(test_semantic_aware_astart src/examples/test_semantic_astar_search.cpp src/semantic_astar.cpp src/bspline_utils.cpp) 
+add_dependencies(test_semantic_aware_astart ${catkin_EXPORTED_TARGETS} )
+target_link_libraries(test_semantic_aware_astart ${catkin_LIBRARIES} utils cgal_utils)
 
 # add_library(mader STATIC src/mader.cpp src/mader.hpp)
 # target_include_directories (mader PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
