@@ -113,6 +113,8 @@ public:
     {
       double cost_left = left.g + bias * left.h + att_weight*left.attCost - rep_weight*left.repCost;
       double cost_right = right.g + bias * right.h + att_weight*right.attCost - rep_weight*right.repCost;
+      // double cost_left = left.g + bias * left.h;
+      // double cost_right = right.g + bias * right.h;
       if (fabs(cost_left - cost_right) < 1e-5)
       {
         return left.h > right.h;  // If two costs are ~the same, decide only upon heuristic
@@ -236,7 +238,7 @@ private:
 
   std::vector<Eigen::Vector3d> result_;
 
-  std::vector<Node> expanded_valid_nodes_;
+  std::vector<Node> expanded_valid_nodes_;  //S_eq in algorithm1
 
   std::unordered_map<Eigen::Vector3i, bool, matrix_hash<Eigen::Vector3i>> map_open_list_;
 

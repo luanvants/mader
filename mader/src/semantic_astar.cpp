@@ -680,7 +680,7 @@ double SemanticAstar::calculateAttCost(const Node& node,
     voxel_center.z() = voxel_origin.z() + (voxel_index.z() + 0.5) * voxel_size;
 
     // Calculate the distance between the node and the voxel center
-    double distance = (node.qi, voxel_center).norm();
+    double distance = (node.qi - voxel_center).norm();
     distances.push_back(distance);
   }
 
@@ -688,6 +688,7 @@ double SemanticAstar::calculateAttCost(const Node& node,
   double sum_of_distances = std::accumulate(distances.begin(), distances.end(), 0.0);
   double mean_distance = sum_of_distances / distances.size();
 
+  // std::cout << green << node.qi.transpose() << "semantic cost=" << mean_distance << reset <<   std::endl;
   return mean_distance;
 }
 //
@@ -1025,9 +1026,16 @@ void SemanticAstar::expandAndAddToQueue(Node& current, double constraint_xL, dou
       continue;
     }
 
+    // neighbor.g = current.g + weightEdge(current, neighbor) + 
+    //               att_weight_*calculateAttCost(neighbor, 0.1);
+    // Node node_goal;
+    // node_goal.qi = goal_;
+    // neighbor.h = h(neighbor) + calculateAttCost(node_goal, 0.1);
+
     neighbor.g = current.g + weightEdge(current, neighbor);
     neighbor.h = h(neighbor);
     neighbor.attCost = calculateAttCost(neighbor, 0.1);
+    
 
     // std::cout << green << neighbor.qi.transpose() << " cost=" << neighbor.g + bias_ * neighbor.h << ", " << neighbor.g + bias_ * neighbor.h + att_weight_ * neighbor.attCost << reset <<   std::endl;
     openList_.push(neighbor);

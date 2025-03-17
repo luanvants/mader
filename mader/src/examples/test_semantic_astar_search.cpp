@@ -426,7 +426,7 @@ int main(int argc, char** argv)
 
     hulls_curves.push_back(hulls_curve);*/
   //// voxels region
-  Eigen::Vector3d region_origin(0.0, 3.0, 0.0);
+  Eigen::Vector3d region_origin(0.0, -3.0, 0.0);
   double voxel_size = 0.1;
   double region_bbox_x = 1.0;
   double region_bbox_y = 1.0;
@@ -467,7 +467,7 @@ int main(int argc, char** argv)
 
   //set weights
   mySemAstarSolver.setBias(1.0);
-  mySemAstarSolver.setAttWeight(3.0);//3.0
+  mySemAstarSolver.setAttWeight(1.0);
   mySemAstarSolver.setRepWeight(0.0);
   mySemAstarSolver.setAttRegion(att_region);
 
