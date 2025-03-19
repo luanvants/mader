@@ -80,6 +80,8 @@ public:
   void setAttWeight(double attweight);
   void setRepWeight(double repweight);
   void setAttRegion(const std::pair<Eigen::Vector3d, const std::vector<Eigen::Vector3i>> att_region);
+  void setRepRegion(const std::pair<Eigen::Vector3d, const std::vector<Eigen::Vector3i>> rep_region);
+
 
   bool run(std::vector<Eigen::Vector3d>& result, std::vector<Eigen::Vector3d>& n, std::vector<double>& d);
 
@@ -130,6 +132,8 @@ public:
   bool collidesWithObstacles(Node& current);
   double getCost();
 
+  double getVoxelSize() const;
+
 protected:
 private:
   // bool computeAxisForNextInterval(const int i, const Eigen::Vector3d& viM1, int axis, double& constraint_L,
@@ -151,7 +155,9 @@ private:
   double h(Node& node);
   double g(Node& node);
   double weightEdge(Node& node1, Node& node2);
-  double calculateAttCost(const Node& node, double voxel_size);
+  double distToRegion(const Node& node, std::pair<Eigen::Vector3d, std::vector<Eigen::Vector3i>> region);
+  double calculateAttCost(const Node& node);
+  double calculateRepCost(const Node& node);
 
   bool checkFeasAndFillND(std::vector<Eigen::Vector3d>& result, std::vector<Eigen::Vector3d>& n,
                           std::vector<double>& d);

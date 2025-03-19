@@ -256,6 +256,7 @@ void SemanticAstar::setMaxValuesAndSamples(Eigen::Vector3d& v_max, Eigen::Vector
   fraction_voxel_size = (fraction_voxel_size < 0) ? 0 : fraction_voxel_size;
 
   voxel_size_ = min_voxel_size + fraction_voxel_size * (max_voxel_size - min_voxel_size);
+  // std::cout << "The size of voxel = " << voxel_size_ <<std::endl;
 
   orig_ = q2_ - Eigen::Vector3d(bbox_x_ / 2.0, bbox_y_ / 2.0, bbox_z_ / 2.0);
 }
@@ -291,7 +292,10 @@ void SemanticAstar::setRepWeight(double repweight) {
 void SemanticAstar::setAttRegion(const std::pair<Eigen::Vector3d, const std::vector<Eigen::Vector3i>> att_region) {
   att_region_ = att_region;
 }
-
+//
+void SemanticAstar::setRepRegion(const std::pair<Eigen::Vector3d, const std::vector<Eigen::Vector3i>> rep_region) {
+  rep_region_ = rep_region;
+}
 //
 void SemanticAstar::setGoal(Eigen::Vector3d& goal)
 {
@@ -663,10 +667,9 @@ double SemanticAstar::weightEdge(Node& node1, Node& node2)  // edge cost when ad
 }
 
 //
-double SemanticAstar::calculateAttCost(const Node& node,
-                                            double voxel_size) {
-  const Eigen::Vector3d& voxel_origin = att_region_.first;
-  const std::vector<Eigen::Vector3i>& voxel_region = att_region_.second;
+double SemanticAstar::distToRegion(const Node& node, std::pair<Eigen::Vector3d, std::vector<Eigen::Vector3i>> region) {
+  const Eigen::Vector3d& voxel_origin = region.first;
+  const std::vector<Eigen::Vector3i>& voxel_region = region.second;
   if (voxel_region.empty()) {
     return 0.0; // Handle the case where the voxel region is empty
   }
@@ -675,9 +678,9 @@ double SemanticAstar::calculateAttCost(const Node& node,
   for (const auto& voxel_index : voxel_region) {
     // Calculate the center of the voxel
     Eigen::Vector3d voxel_center;
-    voxel_center.x() = voxel_origin.x() + (voxel_index.x() + 0.5) * voxel_size;
-    voxel_center.y() = voxel_origin.y() + (voxel_index.y() + 0.5) * voxel_size;
-    voxel_center.z() = voxel_origin.z() + (voxel_index.z() + 0.5) * voxel_size;
+    voxel_center.x() = voxel_origin.x() + (voxel_index.x() + 0.5) * voxel_size_;
+    voxel_center.y() = voxel_origin.y() + (voxel_index.y() + 0.5) * voxel_size_;
+    voxel_center.z() = voxel_origin.z() + (voxel_index.z() + 0.5) * voxel_size_;
 
     // Calculate the distance between the node and the voxel center
     double distance = (node.qi - voxel_center).norm();
@@ -691,7 +694,15 @@ double SemanticAstar::calculateAttCost(const Node& node,
   // std::cout << green << node.qi.transpose() << "semantic cost=" << mean_distance << reset <<   std::endl;
   return mean_distance;
 }
+
 //
+double SemanticAstar::calculateAttCost(const Node& node) {
+  return distToRegion(node, att_region_);
+}
+//
+double SemanticAstar::calculateRepCost(const Node& node) {
+  return distToRegion(node, rep_region_);
+}
 
 void SemanticAstar::printPath(Node& node1)
 {
@@ -1027,15 +1038,17 @@ void SemanticAstar::expandAndAddToQueue(Node& current, double constraint_xL, dou
     }
 
     // neighbor.g = current.g + weightEdge(current, neighbor) + 
-    //               att_weight_*calculateAttCost(neighbor, 0.1);
+    //               att_weight_*calculateAttCost(neighbor);
     // Node node_goal;
     // node_goal.qi = goal_;
-    // neighbor.h = h(neighbor) + calculateAttCost(node_goal, 0.1);
+    // neighbor.h = h(neighbor) + calculateAttCost(node_goal);
 
     neighbor.g = current.g + weightEdge(current, neighbor);
     neighbor.h = h(neighbor);
-    neighbor.attCost = calculateAttCost(neighbor, 0.1);
-    
+    neighbor.attCost = calculateAttCost(neighbor);
+    neighbor.repCost = calculateRepCost(neighbor);
+
+
 
     // std::cout << green << neighbor.qi.transpose() << " cost=" << neighbor.g + bias_ * neighbor.h << ", " << neighbor.g + bias_ * neighbor.h + att_weight_ * neighbor.attCost << reset <<   std::endl;
     openList_.push(neighbor);
@@ -1371,4 +1384,8 @@ exitloop:
   }
 
   return isFeasible;
+}
+
+double SemanticAstar::getVoxelSize() const {
+    return voxel_size_;
 }

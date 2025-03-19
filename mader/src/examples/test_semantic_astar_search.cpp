@@ -289,7 +289,7 @@ int main(int argc, char** argv)
   std::vector<ros::Publisher> traj_obstacle_colored_pubs;
   std::vector<ros::Publisher> best_trajectory_found_intervals_pubs;
 
-  int num_pol = 7;  //origin=7
+  int num_pol = 6;  //origin=7
   int deg_pol = 3;
   visualization_msgs::Marker stat_obs_ma;
   visualization_msgs::MarkerArray stat_obs_ma_array;
@@ -425,13 +425,36 @@ int main(int argc, char** argv)
     }
 
     hulls_curves.push_back(hulls_curve);*/
-  //// voxels region
-  Eigen::Vector3d region_origin(0.0, -3.0, 0.0);
-  double voxel_size = 0.1;
+
+  SemanticAstar mySemAstarSolver(basis, num_pol, deg_pol, alpha_shrink);
+  mySemAstarSolver.setUp(t_min, t_max, hulls_std);
+
+  mySemAstarSolver.setq0q1q2(q0, q1, q2);
+  mySemAstarSolver.setGoal(goal);
+
+  mySemAstarSolver.setXYZMinMaxAndRa(-1e6, 1e6, -1e6, 1e6, -1.0, 10.0, 1e6);  // limits for the search, in world frame
+  mySemAstarSolver.setBBoxSearch(30.0, 30.0, 30.0);                           // limits for the search, centered on q2
+  mySemAstarSolver.setMaxValuesAndSamples(v_max, a_max, samples_x, samples_y, samples_z, fraction_voxel_size);
+
+  mySemAstarSolver.setRunTime(runtime);
+  mySemAstarSolver.setGoalSize(goal_size);
+
+  //set weights
+  mySemAstarSolver.setBias(1.0);
+  mySemAstarSolver.setAttWeight(0.0);
+  mySemAstarSolver.setRepWeight(0.5);
+
+  mySemAstarSolver.setVisual(false);
+
+  //// voxels regions
+  Eigen::Vector3d region_origin(0.0, -1.0, 0.0);
+  double voxel_size = mySemAstarSolver.getVoxelSize();
+  std::cout << "The size of voxel = " << voxel_size <<std::endl;
   double region_bbox_x = 1.0;
   double region_bbox_y = 1.0;
   double region_bbox_z = voxel_size;
-  Eigen::Vector3d region_color(0.0, 1.0, 0.0);
+  Eigen::Vector3d region_color(1.0, 0.0, 0.0);  //attrative region=(0.0, 1.0, 0.0)
+                                                //repelsive region=(1.0, 0.0, 0.0)
   int id_start = 0;
   
   std::pair<std::vector<Eigen::Vector3i>, visualization_msgs::MarkerArray> result =
@@ -444,6 +467,11 @@ int main(int argc, char** argv)
   visualization_msgs::MarkerArray voxel_region_markers = result.second;
   ros::Publisher voxel_region_pub = nh.advertise<visualization_msgs::MarkerArray>("/voxel_region", 1000, true);
   voxel_region_pub.publish(voxel_region_markers);
+  mySemAstarSolver.setAttRegion(att_region);
+
+  std::pair<Eigen::Vector3d, std::vector<Eigen::Vector3i>> rep_region
+      = att_region;
+  mySemAstarSolver.setRepRegion(rep_region);
   // Testing: Calculate the mean distance
   // Eigen::Vector3d node_qi(0.0, 0.0, 0.0);//(1.5, 0.2, 0.8); // Example node position
   // double mean_distance = calculateMeanDistanceToVoxelRegion(node_qi, voxel_region, voxel_size, region_origin);
@@ -451,28 +479,7 @@ int main(int argc, char** argv)
   // std::cout << "Mean distance from node to voxel region: " << mean_distance << std::endl;
 
   ////
-  SemanticAstar mySemAstarSolver(basis, num_pol, deg_pol, alpha_shrink);
-  mySemAstarSolver.setUp(t_min, t_max, hulls_std);
-
-  mySemAstarSolver.setq0q1q2(q0, q1, q2);
-  mySemAstarSolver.setGoal(goal);
-
-  mySemAstarSolver.setXYZMinMaxAndRa(-1e6, 1e6, -1e6, 1e6, -1.0, 10.0, 1e6);  // limits for the search, in world frame
-  mySemAstarSolver.setBBoxSearch(30.0, 30.0, 30.0);                           // limits for the search, centered on q2
-  mySemAstarSolver.setMaxValuesAndSamples(v_max, a_max, samples_x, samples_y, samples_z, fraction_voxel_size);
-  // std::cout << "The size of voxel = " << voxel_size_ <<std::endl;
-
-  mySemAstarSolver.setRunTime(runtime);
-  mySemAstarSolver.setGoalSize(goal_size);
-
-  //set weights
-  mySemAstarSolver.setBias(1.0);
-  mySemAstarSolver.setAttWeight(1.0);
-  mySemAstarSolver.setRepWeight(0.0);
-  mySemAstarSolver.setAttRegion(att_region);
-
-  mySemAstarSolver.setVisual(false);
-
+  
   std::vector<Eigen::Vector3d> q;
   std::vector<Eigen::Vector3d> n;
   std::vector<double> d;
