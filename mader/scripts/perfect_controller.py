@@ -128,7 +128,7 @@ class FakeSim:
 
         marker.lifetime = rospy.Duration.from_sec(0.0);
         marker.mesh_use_embedded_materials=True
-        marker.mesh_resource="package://mader/meshes/quadrotor/quadrotor.dae"
+        marker.mesh_resource="file:///home/nvhung/ws_mader/src/mader/mader/meshes/quadrotor/quadrotor.dae"
         marker.scale.x=1.0;
         marker.scale.y=1.0;
         marker.scale.z=1.0;

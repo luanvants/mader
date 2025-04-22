@@ -94,9 +94,9 @@ class FakeSim:
         if(world_type=="MovingCircle"):
             self.world=MovingCircle()
    
-        available_meshes_static=["package://mader/meshes/ConcreteDamage01b/model3.dae", "package://mader/meshes/ConcreteDamage01b/model2.dae"]
-        available_meshes_dynamic=["package://mader/meshes/ConcreteDamage01b/model4.dae"]
-        # available_meshes=["package://mader/meshes/ConcreteDamage01b/model3.dae"]
+        available_meshes_static=["file:///home/nvhung/ws_mader/src/mader/mader/meshes/ConcreteDamage01b/model3.dae", "file:///home/nvhung/ws_mader/src/mader/mader/meshes/ConcreteDamage01b/model2.dae"]
+        available_meshes_dynamic=["file:///home/nvhung/ws_mader/src/mader/mader/meshes/ConcreteDamage01b/model4.dae"]
+        # available_meshes=["file:///home/nvhung/ws_mader/src/mader/mader/meshes/ConcreteDamage01b/model3.dae"]
 
         self.x_all=[];
         self.y_all=[];
@@ -137,6 +137,12 @@ class FakeSim:
             self.meshes.append(random.choice(available_meshes_static));
             self.bboxes.append(bbox_i)
 
+        # Grass properties
+        self.grass_position = [0.0, 0.0, 0.0]  # x, y, z position of the grass
+        self.grass_scale = [1.0, 1.0, 0.1]    # x, y, z scale of the grass
+        # self.grass_mesh = "file:///home/nvhung/ws_mader/src/mader/mader/meshes/tretuar+ORTA/model.dae"
+        self.grass_mesh = "file:///home/nvhung/ws_mader/src/mader/mader/meshes/tretuarORTA/model.dae"  # Path to the grass mesh
+        self.grass_color = ColorRGBA(r=0.0, g=0.8, b=0.0, a=1.0)  # Green color for CUBE
 
         self.pubTraj = rospy.Publisher('/trajs', DynTraj, queue_size=self.world.total_num_obs)#If queue_size=1, pubTraj will not be able to keep up (due to the loop in pubTF)#, latch=True
         self.pubShapes_static = rospy.Publisher('/shapes_static', Marker, queue_size=1, latch=True)
@@ -144,6 +150,8 @@ class FakeSim:
         self.pubShapes_dynamic_mesh = rospy.Publisher('/shapes_dynamic_mesh', MarkerArray, queue_size=1, latch=True)
         self.pubShapes_dynamic = rospy.Publisher('/shapes_dynamic', Marker, queue_size=1, latch=True)
         self.pubGazeboState = rospy.Publisher('/gazebo/set_model_state', ModelState, queue_size=1)
+        self.pubGrass = rospy.Publisher('/grass_marker', Marker, queue_size=1, latch=True)
+        self.pubGrassMesh = rospy.Publisher('/grass_marker_mesh', Marker, queue_size=1, latch=True)
 
         self.already_published_static_shapes=False;
 
@@ -287,6 +295,57 @@ class FakeSim:
 
         # self.already_published_static_shapes=True;
 
+        # Grass marker
+        grass_marker = Marker()
+        grass_marker.header.frame_id = "world"
+        grass_marker.ns = "grass"
+        grass_marker.id = 1000  # Unique ID for the grass marker
+        grass_marker.type = Marker.CUBE
+        grass_marker.action = Marker.ADD
+
+        # Set grass position, scale, and mesh resource
+        grass_marker.pose.position.x = self.grass_position[0]
+        grass_marker.pose.position.y = self.grass_position[1]
+        grass_marker.pose.position.z = self.grass_position[2]
+        grass_marker.pose.orientation.x = 0.0
+        grass_marker.pose.orientation.y = 0.0
+        grass_marker.pose.orientation.z = 0.0
+        grass_marker.pose.orientation.w = 1.0
+        grass_marker.scale.x = self.grass_scale[0]
+        grass_marker.scale.y = self.grass_scale[1]
+        grass_marker.scale.z = self.grass_scale[2]
+        grass_marker.color = self.grass_color  # for CUBE
+
+        # Publish the grass marker
+        self.pubGrass.publish(grass_marker)
+        # rospy.loginfo(f"Publishing grass marker: {grass_marker}") #debugging why it doesn't show up mesh marker
+
+        # Grass marker
+        grass_marker_mesh = Marker()
+        grass_marker_mesh.header.frame_id = "world"
+        grass_marker_mesh.ns = "grass"
+        grass_marker_mesh.id = 1000  # Unique ID for the grass marker
+        grass_marker_mesh.type = Marker.MESH_RESOURCE  # Use a mesh resource for the grass
+        # grass_marker_mesh.type = Marker.CUBE
+        grass_marker_mesh.action = Marker.ADD
+
+        # Set grass position, scale, and mesh resource
+        grass_marker_mesh.pose.position.x = self.grass_position[0]
+        grass_marker_mesh.pose.position.y = self.grass_position[1]
+        grass_marker_mesh.pose.position.z = self.grass_position[2]
+        grass_marker_mesh.pose.orientation.x = 0.0
+        grass_marker_mesh.pose.orientation.y = 0.0
+        grass_marker_mesh.pose.orientation.z = 0.0
+        grass_marker_mesh.pose.orientation.w = 1.0
+        grass_marker_mesh.scale.x = self.grass_scale[0]
+        grass_marker_mesh.scale.y = self.grass_scale[1]
+        grass_marker_mesh.scale.z = self.grass_scale[2]
+        grass_marker_mesh.mesh_resource = self.grass_mesh
+        grass_marker_mesh.mesh_use_embedded_materials = True  # Use embedded materials if available
+        # grass_marker_mesh.color = self.grass_color  # for CUBE
+
+        # Publish the grass marker
+        self.pubGrassMesh.publish(grass_marker_mesh)
 
 
     def static(self,x,y,z):
@@ -362,4 +421,4 @@ if __name__ == '__main__':
         # self.pubGazeboState = rospy.Publisher('/gazebo/set_model_state', ModelState, queue_size=1)
 
         # self.state.header.frame_id="world"
-        # self.pubState.publish(self.state)  
+        # self.pubState.publish(self.state)
