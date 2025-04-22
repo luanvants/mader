@@ -19,7 +19,7 @@
 <!-- More info at https://roboticsknowledgebase.com/wiki/tools/stream-rviz/ -->
 
 
-<!--   <group ns="camera1">
+  <group ns="camera1">
   <node pkg="tf" type="static_transform_publisher" name="camera_broadcaster"
       args="0.001 0 0 -1.57 0 -1.57 SQ01s camera1 10" />
   <node name="camera_info" pkg="rostopic" type="rostopic"
@@ -35,7 +35,8 @@
       output="screen"/>
   </group>
 
-  <group ns="rviz1/camera1/image">
+  <!-- Configuring the parameters of the camera -->
+  <!-- <group ns="rviz1/camera1/image">
   <rosparam param="disable_pub_plugins">
     - 'image_transport/compressed'
     - 'image_transport/compressedDepth'
