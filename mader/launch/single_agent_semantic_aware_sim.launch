@@ -1,6 +1,6 @@
 <launch>
 
-	<arg name="quad" default="SQ01s"/>
+	<arg name="quad" default="SQ02s"/>
   <arg name="gui" default="false"/>
   <arg name="rviz" default="true"/>
 

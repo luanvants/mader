@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /TF1/Frames1
+        - /CameraPub1/Status1
       Splitter Ratio: 0.640762448310852
     Tree Height: 1068
   - Class: rviz/Selection
@@ -85,7 +86,7 @@ Visualization Manager:
       Name: GTerm
       Queue Size: 10
       Radius: 0.20000000298023224
-      Topic: /SQ01s/semantic_mader/point_G
+      Topic: /SQ02s/semantic_mader/point_G
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -129,20 +130,20 @@ Visualization Manager:
       Name: G
       Queue Size: 10
       Radius: 0.20000000298023224
-      Topic: /SQ01s/cvx/point_G
+      Topic: /SQ02s/cvx/point_G
       Unreliable: false
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ01s/setpoint
+      Marker Topic: /SQ02s/setpoint
       Name: Setpoint
       Namespaces:
-        "": true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
       Enabled: false
-      Marker Topic: /SQ01s/cvx/actual_traj
+      Marker Topic: /SQ02s/cvx/actual_traj
       Name: RealTrajectory
       Namespaces:
         {}
@@ -164,15 +165,15 @@ Visualization Manager:
       VsScale: 1
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ01s/semantic_mader/obstacles
+      Marker Topic: /SQ02s/semantic_mader/obstacles
       Name: Obstacles
       Namespaces:
-        markertacles: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
       Enabled: false
-      Marker Topic: /SQ01s/mader/fov
+      Marker Topic: /SQ02s/mader/fov
       Name: FOV
       Namespaces:
         {}
@@ -220,7 +221,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/Marker
       Enabled: false
-      Marker Topic: /SQ01s/cvx/point_E
+      Marker Topic: /SQ02s/cvx/point_E
       Name: PointE
       Namespaces:
         {}
@@ -228,7 +229,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/Marker
       Enabled: false
-      Marker Topic: /SQ01s/cvx/point_A
+      Marker Topic: /SQ02s/cvx/point_A
       Name: PointA
       Namespaces:
         {}
@@ -246,7 +247,7 @@ Visualization Manager:
       Overtake BG Color Properties: false
       Overtake FG Color Properties: false
       Overtake Position Properties: false
-      Topic: /SQ01s/mader/text
+      Topic: /SQ02s/mader/text
       Value: false
       font: DejaVu Sans Mono
       height: 128
@@ -278,7 +279,7 @@ Visualization Manager:
       width: 128
     - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /SQ01s/sematic_mader/traj_safe_colored
+      Marker Topic: /SQ02s/sematic_mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -350,7 +351,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/MarkerArray
       Enabled: false
-      Marker Topic: /SQ010s/mader/traj_safe_colored
+      Marker Topic: /SQ020s/mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -358,7 +359,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/MarkerArray
       Enabled: false
-      Marker Topic: /SQ011s/mader/traj_safe_colored
+      Marker Topic: /SQ021s/mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -366,7 +367,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/MarkerArray
       Enabled: false
-      Marker Topic: /SQ012s/mader/traj_safe_colored
+      Marker Topic: /SQ022s/mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -374,7 +375,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/MarkerArray
       Enabled: false
-      Marker Topic: /SQ013s/mader/traj_safe_colored
+      Marker Topic: /SQ023s/mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -382,7 +383,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/MarkerArray
       Enabled: false
-      Marker Topic: /SQ014s/mader/traj_safe_colored
+      Marker Topic: /SQ024s/mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -390,7 +391,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/MarkerArray
       Enabled: false
-      Marker Topic: /SQ015s/mader/traj_safe_colored
+      Marker Topic: /SQ025s/mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -398,7 +399,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/MarkerArray
       Enabled: false
-      Marker Topic: /SQ016s/mader/traj_safe_colored
+      Marker Topic: /SQ026s/mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -410,7 +411,7 @@ Visualization Manager:
       Value: false
       color: 25; 255; 240
       duration: 10
-      frame: SQ01s
+      frame: SQ02s
       line_width: 0.009999999776482582
     - Class: jsk_rviz_plugin/TFTrajectory
       Enabled: false
@@ -470,10 +471,10 @@ Visualization Manager:
       line_width: 0.10000000149011612
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ01s/semantic_mader/sem_actual_traj
+      Marker Topic: /SQ02s/semantic_mader/sem_actual_traj
       Name: ActTraj
       Namespaces:
-        ActualTraj_SQ01s: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -566,7 +567,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ010s/mader/actual_traj
+      Marker Topic: /SQ020s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -574,7 +575,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ011s/mader/actual_traj
+      Marker Topic: /SQ021s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -582,7 +583,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ012s/mader/actual_traj
+      Marker Topic: /SQ022s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -590,7 +591,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ013s/mader/actual_traj
+      Marker Topic: /SQ023s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -598,7 +599,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ014s/mader/actual_traj
+      Marker Topic: /SQ024s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -606,7 +607,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ015s/mader/actual_traj
+      Marker Topic: /SQ025s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -614,7 +615,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ016s/mader/actual_traj
+      Marker Topic: /SQ026s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -622,7 +623,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ017s/mader/actual_traj
+      Marker Topic: /SQ027s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -630,7 +631,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ018s/mader/actual_traj
+      Marker Topic: /SQ028s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -638,7 +639,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ019s/mader/actual_traj
+      Marker Topic: /SQ029s/mader/actual_traj
       Name: ActTraj
       Namespaces:
         {}
@@ -782,15 +783,15 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ01s/semantic_drone_marker
+      Marker Topic: /SQ02s/semantic_drone_marker
       Name: mkr_quadrotor
       Namespaces:
-        mesh_SQ01s: true
+        mesh_SQ02s: true
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
       Enabled: false
-      Marker Topic: /SQ01s/marker
+      Marker Topic: /SQ02s/marker
       Name: Marker
       Namespaces:
         {}
@@ -866,7 +867,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: false
-      Marker Topic: /SQ01s/mader/actual_traj
+      Marker Topic: /SQ02s/mader/actual_traj
       Name: Marker
       Namespaces:
         {}
@@ -892,7 +893,7 @@ Visualization Manager:
       X std deviation: 0.5
       Y std deviation: 0.5
     - Class: rviz/SetGoal
-      Topic: /SQ01s/term_goal
+      Topic: /SQ02s/term_goal
     - Class: rviz/PublishPoint
       Single click: true
       Topic: /clicked_point
