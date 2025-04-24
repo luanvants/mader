@@ -85,7 +85,7 @@ Visualization Manager:
       Name: GTerm
       Queue Size: 10
       Radius: 0.20000000298023224
-      Topic: /SQ01s/mader/point_G
+      Topic: /SQ01s/semantic_mader/point_G
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -137,7 +137,7 @@ Visualization Manager:
       Marker Topic: /SQ01s/setpoint
       Name: Setpoint
       Namespaces:
-        {}
+        "": true
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -164,10 +164,10 @@ Visualization Manager:
       VsScale: 1
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ01s/mader/obstacles
+      Marker Topic: /SQ01s/semantic_mader/obstacles
       Name: Obstacles
       Namespaces:
-        {}
+        markertacles: true
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -278,7 +278,7 @@ Visualization Manager:
       width: 128
     - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /SQ01s/mader/traj_safe_colored
+      Marker Topic: /SQ01s/sematic_mader/traj_safe_colored
       Name: Safe_Color
       Namespaces:
         {}
@@ -470,10 +470,10 @@ Visualization Manager:
       line_width: 0.10000000149011612
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ01s/mader/actual_traj
+      Marker Topic: /SQ01s/semantic_mader/sem_actual_traj
       Name: ActTraj
       Namespaces:
-        {}
+        ActualTraj_SQ01s: true
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -782,7 +782,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /SQ01s/drone_marker
+      Marker Topic: /SQ01s/semantic_drone_marker
       Name: mkr_quadrotor
       Namespaces:
         mesh_SQ01s: true
@@ -864,6 +864,14 @@ Visualization Manager:
         grass: true
       Queue Size: 100
       Value: true
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /SQ01s/mader/actual_traj
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 238; 238; 236
@@ -900,8 +908,8 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 3.513702154159546
-        Y: -1.7713229656219482
+        X: 5.4957427978515625
+        Y: -2.0361599922180176
         Z: 1.4412509699468501e-05
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806

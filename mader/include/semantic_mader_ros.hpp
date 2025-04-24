@@ -24,7 +24,7 @@
 #include <mader_msgs/DynTraj.h>
 
 #include "utils.hpp"
-#include "mader.hpp"
+#include "semantic_mader.hpp"
 #include "mader_types.hpp"
 
 #include "timer.hpp"
@@ -53,6 +53,7 @@ private:
   void pubCB(const ros::TimerEvent& e);
   void replanCB(const ros::TimerEvent& e);
   void trajCB(const mader_msgs::DynTraj& msg);
+  void semaAreaCB(const visualization_msgs::Marker& msg);
   
   // void clearMarkerSetOfArrows();
   void clearMarkerActualTraj();
@@ -113,6 +114,7 @@ private:
   ros::Subscriber sub_whoplans_;
   ros::Subscriber sub_state_;
   ros::Subscriber sub_traj_;
+  ros::Subscriber sub_semantic_area_;
 
   ros::Timer pubCBTimer_;
   ros::Timer replanCBTimer_;

@@ -58,6 +58,10 @@ add_library(octopus_search STATIC src/octopus_search.cpp src/bspline_utils.cpp s
 target_include_directories (octopus_search PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(octopus_search PUBLIC ${catkin_LIBRARIES}) 
 
+add_library(semantic_astar STATIC src/semantic_astar.cpp src/bspline_utils.cpp src/utils.cpp) 
+target_include_directories (semantic_astar PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(semantic_astar PUBLIC ${catkin_LIBRARIES}) 
+
 if(USE_GUROBI)
 
 	find_package(GUROBI REQUIRED)
@@ -77,6 +81,12 @@ if(USE_GUROBI)
 	target_include_directories (solver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${DECOMP_UTIL_INCLUDE_DIRS})
 	target_link_libraries(solver PUBLIC ${GUROBI_LIBRARIES} ${DECOMP_UTIL_LIBRARIES} utils octopus_search ${catkin_LIBRARIES} cgal_utils)
 
+	#
+	add_library(semantic_solver STATIC src/semantic_solver_gurobi.cpp src/bspline_utils.cpp src/solver_gurobi_utils.cpp src/semantic_solver_gurobi_guess.cpp)
+	target_compile_definitions(semantic_solver PUBLIC USE_GUROBI_FLAG=1) 
+	target_include_directories (semantic_solver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${DECOMP_UTIL_INCLUDE_DIRS})
+	target_link_libraries(semantic_solver PUBLIC ${GUROBI_LIBRARIES} ${DECOMP_UTIL_LIBRARIES} utils semantic_astar ${catkin_LIBRARIES} cgal_utils)
+
 	add_executable(test_gurobi src/examples/test_gurobi.cpp)
 	add_dependencies(test_gurobi ${catkin_EXPORTED_TARGETS})
 	target_link_libraries(test_gurobi ${catkin_LIBRARIES} utils ${GUROBI_LIBRARIES} solver)
@@ -89,6 +99,12 @@ else()
 	target_include_directories (solver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${DECOMP_UTIL_INCLUDE_DIRS})
 	target_link_libraries(solver PUBLIC ${NLOPT_LIBRARIES} ${DECOMP_UTIL_LIBRARIES} utils octopus_search ${catkin_LIBRARIES} cgal_utils)
 
+	#
+	add_library(semantic_solver STATIC src/solver_nlopt.cpp src/bspline_utils.cpp src/nlopt_utils.cpp )
+	target_compile_definitions(semantic_solver PUBLIC USE_GUROBI_FLAG=0) 
+	target_include_directories (semantic_solver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${DECOMP_UTIL_INCLUDE_DIRS})
+	target_link_libraries(semantic_solver PUBLIC ${NLOPT_LIBRARIES} ${DECOMP_UTIL_LIBRARIES} utils semantic_astar ${catkin_LIBRARIES} cgal_utils)
+
 	add_executable(test_nlopt src/examples/test_nlopt.cpp)
 	add_dependencies(test_nlopt ${catkin_EXPORTED_TARGETS})
 	target_link_libraries(test_nlopt ${catkin_LIBRARIES} utils solver)
@@ -100,6 +116,12 @@ add_executable(${PROJECT_NAME}_node src/mader_node.cpp src/mader_ros.cpp src/mad
 target_link_libraries(${PROJECT_NAME}_node PUBLIC ${catkin_LIBRARIES}  solver utils)  #${CGAL_LIBS}
 add_dependencies(${PROJECT_NAME}_node ${catkin_EXPORTED_TARGETS} )
 
+#semantic mader
+add_executable(semantic_${PROJECT_NAME}_node src/mader_node.cpp src/semantic_mader_ros.cpp src/semantic_mader.cpp )
+target_link_libraries(semantic_${PROJECT_NAME}_node PUBLIC ${catkin_LIBRARIES}  semantic_solver utils)  #${CGAL_LIBS}
+add_dependencies(semantic_${PROJECT_NAME}_node ${catkin_EXPORTED_TARGETS} )
+
+#
 add_executable(test_octopus_search src/examples/test_octopus_search.cpp src/octopus_search.cpp src/bspline_utils.cpp) 
 add_dependencies(test_octopus_search ${catkin_EXPORTED_TARGETS} )
 target_link_libraries(test_octopus_search ${catkin_LIBRARIES} utils cgal_utils) 

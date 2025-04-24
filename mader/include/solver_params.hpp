@@ -34,6 +34,8 @@ struct par_solver
   std::string solver;
   std::string basis;
   double a_star_bias;
+  double att_weight;
+  double rep_weight;
   bool allow_infeasible_guess;
   double Ra;
 

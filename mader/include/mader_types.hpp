@@ -618,6 +618,8 @@ struct parameters
   bool allow_infeasible_guess = false;
 
   double a_star_bias = 1.0;
+  double att_weight = 1.0;
+  double rep_weight = 1.0;
 
   std::string basis;
 

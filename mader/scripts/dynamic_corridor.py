@@ -138,8 +138,8 @@ class FakeSim:
             self.bboxes.append(bbox_i)
 
         # Grass properties
-        self.grass_position = [0.0, 0.0, 0.0]  # x, y, z position of the grass
-        self.grass_scale = [1.0, 1.0, 0.1]    # x, y, z scale of the grass
+        self.grass_position = [10.0, 3.0, 0.0]  # x, y, z position of the grass
+        self.grass_scale = [10.0, 2.0, 0.1]    # x, y, z scale of the grass
         # self.grass_mesh = "file:///home/nvhung/ws_mader/src/mader/mader/meshes/tretuar+ORTA/model.dae"
         self.grass_mesh = "file:///home/nvhung/ws_mader/src/mader/mader/meshes/tretuarORTA/model.dae"  # Path to the grass mesh
         self.grass_color = ColorRGBA(r=0.0, g=0.8, b=0.0, a=1.0)  # Green color for CUBE
