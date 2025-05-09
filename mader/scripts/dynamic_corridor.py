@@ -198,15 +198,15 @@ class FakeSim:
               marker_dynamic.scale.y=bbox_i[1]
               marker_dynamic.scale.z=bbox_i[2]
             else:
-              # [x_string, y_string, z_string] = self.static(self.x_all[i], self.y_all[i], self.z_all[i]);
+              [x_string, y_string, z_string] = self.static(self.x_all[i], self.y_all[i], self.z_all[i]);
               dynamic_trajectory_msg.bbox = bbox_i;
               marker_static.scale.x=bbox_i[0]
               marker_static.scale.y=bbox_i[1]
               marker_static.scale.z=bbox_i[2]
-              if(self.type[i]=="static_vert"):
-                [x_string, y_string, z_string] = self.wave_in_z(self.x_all[i], self.y_all[i], self.z_all[i], s, self.offset_all[i], 1.0)
-              else:
-                [x_string, y_string, z_string] = self.wave_in_z(self.x_all[i], self.y_all[i], self.z_all[i], s, self.offset_all[i], 1.0)
+            #   if(self.type[i]=="static_vert"):
+            #     [x_string, y_string, z_string] = self.wave_in_z(self.x_all[i], self.y_all[i], self.z_all[i], s, self.offset_all[i], 1.0)
+            #   else:
+            #     [x_string, y_string, z_string] = self.wave_in_z(self.x_all[i], self.y_all[i], self.z_all[i], s, self.offset_all[i], 1.0)
 
 
 

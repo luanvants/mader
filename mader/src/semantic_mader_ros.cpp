@@ -627,7 +627,7 @@ void MaderRos::pubTraj(const std::vector<mt::state>& data)
   pub_traj_safe_.publish(traj);
   clearMarkerArray(&traj_safe_colored_, &pub_traj_safe_colored_);
 
-  double scale = 0.15;
+  double scale = 1.15;
 
   traj_safe_colored_ = mu::trajectory2ColoredMarkerArray(data, par_.v_max.maxCoeff(), increm, name_drone_, scale,
                                                          par_.color_type, id_, par_.n_agents);

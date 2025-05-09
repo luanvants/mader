@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <authoring_tool>Simple Grass Mesh</authoring_tool>
+    </contributor>
+    <created>2025-04-10T00:00:00</created>
+    <modified>2025-04-10T00:00:00</modified>
+    <unit name="meter" meter="1.0"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_geometries>
+    <geometry id="grass_geometry">
+      <mesh>
+        <source id="positions">
+          <float_array id="positions_array" count="12">-1 0 -1  1 0 -1  1 0 1  -1 0 1</float_array>
+          <technique_common>
+            <accessor source="#positions_array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="vertices">
+          <input semantic="POSITION" source="#positions"/>
+        </vertices>
+        <triangles count="2">
+          <input semantic="VERTEX" source="#vertices" offset="0"/>
+          <p>0 1 2  0 2 3</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene">
+      <node id="grass_node">
+        <instance_geometry url="#grass_geometry"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

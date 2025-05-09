@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/nvhung/ws_mader/devel/lib/python3/dist-packages",
+        "/home/nvhung/ws_panther/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/nvhung/ws_mader/devel/lib/python3/dist-packages",
+        "/home/nvhung/ws_panther/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}

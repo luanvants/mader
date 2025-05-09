@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/noetic/include/**",
+        "/home/nvhung/ws_mader/devel/include/**",
+        "/home/nvhung/ws_panther/devel/include/**",
+        "/home/nvhung/ws_mader/src/mader/thirdparty/DecompROS/decomp_ros_utils/include/**",
+        "/home/nvhung/ws_mader/src/mader/thirdparty/DecompROS/DecompUtil/include/**",
+        "/home/nvhung/ws_panther/src/panther/thirdparty/hungarian-algorithm-cpp/include/**",
+        "/home/nvhung/ws_mader/src/mader/mader/include/**",
+        "/home/nvhung/ws_panther/src/panther/panther/include/**",
+        "/home/nvhung/ws_mader/src/mader/submodules/separator/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

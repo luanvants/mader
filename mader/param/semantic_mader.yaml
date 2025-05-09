@@ -1,6 +1,6 @@
 use_ff: true # use feedforward
 visual: true #publish visualization stuff
-color_type: "vel" #"vel" or "plain"
+color_type: "plain" #"vel" or "plain"
 n_agents: 16 #only used for the color in the trajectory
 
 dc: 0.01            #(seconds) Duration for the interpolation=Value of the timer pubGoal

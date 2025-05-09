@@ -1,0 +1,26 @@
+<launch>
+
+	<arg name="quad1" default="SQ01s"/>
+  <arg name="quad2" default="SQ02s"/>
+	<!-- <arg name="goal_topic" default="goal"/>
+  <arg name="gui" default="false"/>
+  <arg name="rviz" default="true"/> -->
+
+  <!-- Chạy semantic mader thì uncomment này -->
+ <!-- <include file="$(find mader)/launch/single_agent_semantic_aware_sim.launch">
+      <arg name="quad" value="$(arg quad2)"/>
+      <arg name="gui" value="false"/>
+      <arg name="rviz" value="true"/>
+  </include>  -->
+
+  <!-- Chạy mader thì uncomment này -->
+  <include file="$(find mader)/launch/single_agent_simulation.launch">
+      <arg name="quad" value="$(arg quad1)"/>
+      <arg name="gui" value="false"/>
+      <arg name="rviz" value="true"/>
+  </include>
+
+  <node pkg="mader" type="rosbag_and_goal.sh" name="record_and_goal" output="screen" />
+
+  
+</launch>
